@@ -1,5 +1,5 @@
 {
-  "name": "app",
+  "name": "cs2220-project",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -9,15 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@chakra-ui/react": "^2.8.1",
-    "@emotion/react": "^11.11.1",
-    "@emotion/styled": "^11.11.0",
-    "autoprefixer": "10.4.15",
+    "autoprefixer": "10.4.16",
     "eslint": "8.49.0",
-    "eslint-config-next": "13.5.1",
-    "framer-motion": "^10.16.4",
-    "mysql2": "^3.6.1",
-    "next": "13.5.1",
+    "eslint-config-next": "13.5.2",
+    "next": "13.5.2",
     "postcss": "8.4.30",
     "react": "18.2.0",
     "react-dom": "18.2.0",
