@@ -9,7 +9,7 @@ export default function Page() {
         <form className="flex flex-col items-center">
           <input
             type="text"
-            placeholder="Enter protein query"
+            placeholder="Enter protein id"
             className="px-4 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-500 w-full mb-4 text-black"
           />
           <button
