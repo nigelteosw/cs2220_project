@@ -7,6 +7,7 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 
 const SearchForm = () => {
+
 	const handleSearch = async () => {
 		try {
 			// Send a GET request to the "api/proteins" endpoint
@@ -17,6 +18,7 @@ const SearchForm = () => {
 				// Handle the successful response here
 				const data = await response.json();
 				console.log("API Response: ", data);
+
 			} else {
 				// Handle API errors, e.g., display an error message
 				console.error("API Error:", response.statusText);
