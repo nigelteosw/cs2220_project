@@ -12,10 +12,6 @@ const SearchForm = () => {
 			// Send a GET request to the "api/proteins" endpoint
 			const response = await fetch("/api/proteins", {
 				method: "GET",
-				headers: {
-					"Content-Type": "application/json",
-					// Add any additional headers if needed
-				},
 			});
 			if (response.ok) {
 				// Handle the successful response here
