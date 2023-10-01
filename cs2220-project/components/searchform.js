@@ -5,20 +5,24 @@ import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
+import { useState } from "react";
+import Link from "next/link";
 
 const SearchForm = () => {
+	const [jsonData, setJsonData] = useState(null);
 
 	const handleSearch = async () => {
 		try {
 			// Send a GET request to the "api/proteins" endpoint
 			const response = await fetch("/api/proteins", {
 				method: "GET",
+				cache: "force-cache",
 			});
 			if (response.ok) {
 				// Handle the successful response here
 				const data = await response.json();
 				console.log("API Response: ", data);
-
+				setJsonData(data);
 			} else {
 				// Handle API errors, e.g., display an error message
 				console.error("API Error:", response.statusText);
@@ -56,14 +60,20 @@ const SearchForm = () => {
 					/>
 				</Grid>
 				<Grid item xs={12}>
-					{/*make the button go to results*/}
-					<Button
-						variant="contained"
-						color="primary"
-						onClick={handleSearch}
+					<Link
+						href={{
+							pathname: "/results",
+							query: { data: JSON.stringify(jsonData) },
+						}}
 					>
-						Search
-					</Button>
+						<Button
+							variant="contained"
+							color="primary"
+							onClick={handleSearch}
+						>
+							Search
+						</Button>
+					</Link>
 				</Grid>
 			</Grid>
 		</React.Fragment>

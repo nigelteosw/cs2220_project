@@ -1,55 +1,117 @@
 "use client";
-
 import * as React from "react";
 import { DataGrid } from "@mui/x-data-grid";
+import { useState } from "react";
+import { Button } from "@mui/material";
+import Navbar from "../../components/navbar.js";
+import Container from "@mui/material/Container";
+import Grid from "@mui/material/Grid";
+import Typography from "@mui/material/Typography";
+import Paper from "@mui/material/Paper";
 
-const columns = [
-	{ field: "id", headerName: "ID", width: 70 },
-	{ field: "firstName", headerName: "First name", width: 130 },
-	{ field: "lastName", headerName: "Last name", width: 130 },
-	{
-		field: "age",
-		headerName: "Age",
-		type: "number",
-		width: 90,
-	},
-	{
-		field: "fullName",
-		headerName: "Full name",
-		description: "This column has a value getter and is not sortable.",
-		sortable: false,
-		width: 160,
-		valueGetter: (params) =>
-			`${params.row.firstName || ""} ${params.row.lastName || ""}`,
-	},
-];
+export default function ResultsPage() {
+	// Use the useRouter hook to access the query object
 
-const rows = [
-	{ id: 1, lastName: "Snow", firstName: "Jon", age: 35 },
-	{ id: 2, lastName: "Lannister", firstName: "Cersei", age: 42 },
-	{ id: 3, lastName: "Lannister", firstName: "Jaime", age: 45 },
-	{ id: 4, lastName: "Stark", firstName: "Arya", age: 16 },
-	{ id: 5, lastName: "Targaryen", firstName: "Daenerys", age: null },
-	{ id: 6, lastName: "Melisandre", firstName: null, age: 150 },
-	{ id: 7, lastName: "Clifford", firstName: "Ferrara", age: 44 },
-	{ id: 8, lastName: "Frances", firstName: "Rossini", age: 36 },
-	{ id: 9, lastName: "Roxie", firstName: "Harvey", age: 65 },
-];
+	const [jsonData, setJsonData] = useState(null);
 
-export default function DataTable() {
+	// replace "Entry" in jsonData with "id" for DataGrid
+	const getJsonData = () => {
+		if (jsonData) {
+			const newData = jsonData.map((row) => {
+				return { ...row, id: row.Entry };
+			});
+			return newData;
+		}
+		return [];
+	};
+
+	const columns = [
+		{ field: "Entry", headerName: "Entry", flex: 1 },
+		{ field: "Authors", headerName: "Authors", flex: 1 },
+		{
+			field: "Binding_free_energy_G",
+			headerName: "Binding Free Energy G",
+			flex: 1,
+		},
+		{
+			field: "Change_in_binding_free_energy_G",
+			headerName: "Change in Binding Free Energy G",
+			flex: 1,
+		},
+
+		{ field: "Experiment", headerName: "Experiment", flex: 1 },
+		{ field: "Journal", headerName: "Journal", flex: 1 },
+		{ field: "Mutations2", headerName: "Mutations2", flex: 1 },
+		{ field: "PDB", headerName: "PDB", flex: 1 },
+		{ field: "Protein_1", headerName: "Protein 1", flex: 1 },
+		{ field: "Protein_2", headerName: "Protein 2", flex: 1 },
+		{ field: "PubMed_ID", headerName: "PubMed ID", flex: 1 },
+		{ field: "Temperature", headerName: "Temperature", flex: 1 },
+		{ field: "pH", headerName: "pH", flex: 1 },
+	];
+
+	const handleSearch = async () => {
+		try {
+			// Send a GET request to the "api/proteins" endpoint
+			const response = await fetch("/api/proteins", {
+				method: "GET",
+				cache: "force-cache",
+			});
+			if (response.ok) {
+				// Handle the successful response here
+				const data = await response.json();
+				console.log("API Response: ", data);
+				setJsonData(data);
+			} else {
+				// Handle API errors, e.g., display an error message
+				console.error("API Error:", response.statusText);
+			}
+		} catch (error) {
+			console.error("API Request Error:", error);
+		}
+	};
+
+	// Now you can use jsonData in your component
 	return (
-		<div style={{ height: 400, width: "100%" }}>
-			<DataGrid
-				rows={rows}
-				columns={columns}
-				initialState={{
-					pagination: {
-						paginationModel: { page: 0, pageSize: 5 },
-					},
-				}}
-				pageSizeOptions={[5, 10]}
-				checkboxSelection
-			/>
-		</div>
+		<React.Fragment>
+			<Navbar />
+			<Container maxWidth="lg">
+				<Paper
+					elevation={3}
+					style={{ padding: "20px", marginBottom: "20px", marginTop: "20px" }}
+				>
+					<Grid container alignItems="center" spacing={2}>
+						<Grid item xs={12} sm={6}>
+							<Typography variant="h5" component="h2">
+								Protein Database
+							</Typography>
+						</Grid>
+						<Grid
+							item
+							xs={12}
+							sm={6}
+							container
+							justifyContent="flex-end"
+						>
+							<Button
+								variant="contained"
+								color="primary"
+								onClick={handleSearch}
+							>
+								Search
+							</Button>
+						</Grid>
+					</Grid>
+				</Paper>
+
+				<Paper elevation={3} style={{ height: 600, width: "100%" }}>
+					<DataGrid
+						rows={getJsonData()}
+						columns={columns}
+						pageSize={20}
+					/>
+				</Paper>
+			</Container>
+		</React.Fragment>
 	);
 }
