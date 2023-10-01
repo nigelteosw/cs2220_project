@@ -9,14 +9,28 @@ import Checkbox from "@mui/material/Checkbox";
 import Button from "@mui/material/Button";
 
 const SearchForm = () => {
-	const handleSearch = () => {
-		// Handle the search logic here
-        // You can access the input values from the form fields and perform a search
-        // For now, let's just log the values to the console
-        console.log("Protein Name:", document.getElementById("proteinName").value);
-        console.log("Pubmed ID:", document.getElementById("pubmedID").value);
-    };
-
+	const handleSearch = async () => {
+		try {
+			// Send a GET request to the "api/proteins" endpoint
+			const response = await fetch("/api/proteins", {
+				method: "GET",
+				headers: {
+					"Content-Type": "application/json",
+					// Add any additional headers if needed
+				},
+			});
+			if (response.ok) {
+				// Handle the successful response here
+				const data = await response.json();
+				console.log("API Response: ", data);
+			} else {
+				// Handle API errors, e.g., display an error message
+				console.error("API Error:", response.statusText);
+			}
+		} catch (error) {
+			console.error("API Request Error:", error);
+		}
+	};
 
 	return (
 		<React.Fragment>
@@ -46,6 +60,7 @@ const SearchForm = () => {
 					/>
 				</Grid>
 				<Grid item xs={12}>
+					{/*make the button go to results*/}
 					<Button
 						variant="contained"
 						color="primary"
