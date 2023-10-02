@@ -1,6 +1,7 @@
 "use client";
 import * as React from "react";
-import { DataGrid } from "@mui/x-data-grid";
+import { useRouter } from "next/navigation";
+import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import { useState } from "react";
 import { Button } from "@mui/material";
 import Navbar from "../../components/navbar.js";
@@ -8,11 +9,13 @@ import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import Paper from "@mui/material/Paper";
+import { stringify } from "postcss";
 
 export default function ResultsPage() {
 	// Use the useRouter hook to access the query object
 
 	const [jsonData, setJsonData] = useState(null);
+	const router = useRouter();
 
 	// replace "Entry" in jsonData with "id" for DataGrid
 	const getJsonData = () => {
@@ -24,6 +27,14 @@ export default function ResultsPage() {
 		}
 		return [];
 	};
+
+	// const goToDisplay = (param, event) => {
+	// 	// console.log(param.row.id);
+	// 	console.log(param.row);
+	// 	// turn param.row into string
+	// 	const data = JSON.stringify(param.row.id);
+	// 	router.push('/display/' + data);
+	// };
 
 	const columns = [
 		{ field: "Entry", headerName: "Entry", flex: 1 },
@@ -102,29 +113,23 @@ export default function ResultsPage() {
 								color="primary"
 								onClick={handleSearch}
 							>
-								Initialize
+								Initialize Database
 							</Button>
 						</Grid>
 					</Grid>
 				</Paper>
 				<Grid container spacing={2}>
-					<Grid item xs={12} sm={4}>
+					<Grid item xs={12}>
 						<Paper
 							elevation={3}
-							style={{ padding: "20px", marginBottom: "20px" }}
+							style={{ height: 600, width: "100%" }}
 						>
-							<Button variant="contained"
-								color="primary">
-								Search
-							</Button>
-						</Paper>
-					</Grid>
-					<Grid item xs={12} sm={8}>
-						<Paper elevation={3} style={{ height: 600, width: "100%" }}>
 							<DataGrid
 								rows={getJsonData()}
+								// onRowDoubleClick={goToDisplay}
 								columns={columns}
 								pageSize={20}
+								slots={{ toolbar: GridToolbar }}
 							/>
 						</Paper>
 					</Grid>
