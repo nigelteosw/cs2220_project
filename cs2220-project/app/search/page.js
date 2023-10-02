@@ -75,10 +75,14 @@ export default function ResultsPage() {
 	return (
 		<React.Fragment>
 			<Navbar />
-			<Container maxWidth="lg">
+			<Container maxWidth="7xl">
 				<Paper
 					elevation={3}
-					style={{ padding: "20px", marginBottom: "20px", marginTop: "20px" }}
+					style={{
+						padding: "20px",
+						marginBottom: "20px",
+						marginTop: "20px",
+					}}
 				>
 					<Grid container alignItems="center" spacing={2}>
 						<Grid item xs={12} sm={6}>
@@ -98,19 +102,33 @@ export default function ResultsPage() {
 								color="primary"
 								onClick={handleSearch}
 							>
-								Search
+								Initialize
 							</Button>
 						</Grid>
 					</Grid>
 				</Paper>
-
-				<Paper elevation={3} style={{ height: 600, width: "100%" }}>
-					<DataGrid
-						rows={getJsonData()}
-						columns={columns}
-						pageSize={20}
-					/>
-				</Paper>
+				<Grid container spacing={2}>
+					<Grid item xs={12} sm={4}>
+						<Paper
+							elevation={3}
+							style={{ padding: "20px", marginBottom: "20px" }}
+						>
+							<Button variant="contained"
+								color="primary">
+								Search
+							</Button>
+						</Paper>
+					</Grid>
+					<Grid item xs={12} sm={8}>
+						<Paper elevation={3} style={{ height: 600, width: "100%" }}>
+							<DataGrid
+								rows={getJsonData()}
+								columns={columns}
+								pageSize={20}
+							/>
+						</Paper>
+					</Grid>
+				</Grid>
 			</Container>
 		</React.Fragment>
 	);
