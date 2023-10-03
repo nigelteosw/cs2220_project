@@ -9,7 +9,6 @@ import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import Paper from "@mui/material/Paper";
-import { stringify } from "postcss";
 
 export default function ResultsPage() {
 	// Use the useRouter hook to access the query object
@@ -28,13 +27,12 @@ export default function ResultsPage() {
 		return [];
 	};
 
-	// const goToDisplay = (param, event) => {
-	// 	// console.log(param.row.id);
-	// 	console.log(param.row);
-	// 	// turn param.row into string
-	// 	const data = JSON.stringify(param.row.id);
-	// 	router.push('/display/' + data);
-	// };
+	const goToDisplay = (param, event) => {
+		console.log(param.row.PubMed_ID);
+		// go to https://pubmed.ncbi.nlm.nih.gov/
+		const url = "https://pubmed.ncbi.nlm.nih.gov/" + param.row.PubMed_ID + "/";
+		window.open(url, "_blank");
+	};
 
 	const columns = [
 		{ field: "Entry", headerName: "Entry", flex: 1 },
@@ -100,6 +98,10 @@ export default function ResultsPage() {
 							<Typography variant="h5" component="h2">
 								Protein Database
 							</Typography>
+							<Typography variant="body2">
+								Double click on a row to view the PubMed article
+								associated with the protein interaction!
+							</Typography>
 						</Grid>
 						<Grid
 							item
@@ -126,7 +128,7 @@ export default function ResultsPage() {
 						>
 							<DataGrid
 								rows={getJsonData()}
-								// onRowDoubleClick={goToDisplay}
+								onRowDoubleClick={goToDisplay}
 								columns={columns}
 								pageSize={20}
 								slots={{ toolbar: GridToolbar }}

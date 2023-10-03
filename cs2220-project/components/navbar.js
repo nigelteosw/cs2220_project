@@ -31,6 +31,9 @@ const Navbar = () => {
 					<Link href="/statistics" style={linkStyle}>
 						Statistics
 					</Link>
+					<Link href="/tutorial" style={linkStyle}>
+						Tutorial
+					</Link>
 					<Link href="/about" style={linkStyle}>
 						About
 					</Link>
