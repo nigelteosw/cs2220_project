@@ -18,7 +18,7 @@ const AboutPage = () => {
 						About the Project
 					</Typography>
 					<Typography variant="body1" paragraph>
-						Welcome to our project&apos;s "About" page. We are
+						Welcome to our project&apos;s &quot;About&quot; page. We are
 						excited to share information about our project with you.
 					</Typography>
 					<Typography variant="body1" paragraph>
