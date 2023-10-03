@@ -18,13 +18,13 @@ const AboutPage = () => {
 						About the Project
 					</Typography>
 					<Typography variant="body1" paragraph>
-						Welcome to our project's "About" page. We are excited to
-						share information about our project with you.
+						Welcome to our project&apos;s "About" page. We are
+						excited to share information about our project with you.
 					</Typography>
 					<Typography variant="body1" paragraph>
-						<strong>Purpose:</strong> Our project's purpose is to
-						develop a comprehensive database for protein interaction
-						energy between two proteins.
+						<strong>Purpose:</strong> Our project&apos;s purpose is
+						to develop a comprehensive database for protein
+						interaction energy between two proteins.
 					</Typography>
 					<Typography variant="body1" paragraph>
 						<strong>Technologies Used:</strong> We have employed a
@@ -38,8 +38,8 @@ const AboutPage = () => {
 					</Typography>
 					<Typography variant="body1" paragraph>
 						<strong>GitHub Repository:</strong> You can explore our
-						project's source code and contribute to its development
-						on our{" "}
+						project&apos;s source code and contribute to its
+						development on our{" "}
 						<Link
 							href="https://github.com/nigelteosw/cs2220_project"
 							target="_blank"
@@ -59,6 +59,6 @@ const AboutPage = () => {
 			</Container>
 		</main>
 	);
-}
+};
 
 export default AboutPage;

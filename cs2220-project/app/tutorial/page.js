@@ -31,10 +31,10 @@ function TutorialPage() {
 						specific proteins or interactions.
 					</Typography>
 					<Typography variant="body1" paragraph>
-						<strong>2. Explore the Results:</strong> Once you've
-						entered your query, you'll be presented with a list of
-						results. Click on a result to view detailed information
-						about the protein interaction.
+						<strong>2. Explore the Results:</strong> Once
+						you&apos;ve entered your query, you&apos;ll be presented
+						with a list of results. Click on a result to view
+						detailed information about the protein interaction.
 					</Typography>
 					<Typography variant="h5" component="h2" gutterBottom>
 						Navigating the Website
@@ -42,8 +42,8 @@ function TutorialPage() {
 					<Typography variant="body1" paragraph>
 						<strong>1. Navigation Bar:</strong> Use the navigation
 						bar on the top to access different sections of our
-						website, including the Search, Statistics, About and
-						Tutorial (you're here!).
+						website, including the Search, Statistics, About, and
+						Tutorial (you&apos;re here!).
 					</Typography>
 					<Typography variant="body1" paragraph>
 						<strong>2. Sorting and Filtering:</strong> On the search
@@ -62,7 +62,7 @@ function TutorialPage() {
 					<Typography variant="body1" paragraph>
 						<strong>Questions or Feedback:</strong> If you have any
 						questions or feedback about using our website, please
-						don't hesitate to{" "}
+						don&apos;t hesitate to{" "}
 						<Link
 							href="https://github.com/nigelteosw"
 							target="_blank"
@@ -70,6 +70,7 @@ function TutorialPage() {
 						>
 							reach out to me on GitHub
 						</Link>
+						.
 					</Typography>
 				</Paper>
 			</Container>
