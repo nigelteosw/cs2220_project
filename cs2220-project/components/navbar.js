@@ -11,7 +11,7 @@ const Navbar = () => {
 	const linkStyle = {
 		fontFamily: "Roboto, sans-serif", // Apply the custom font
 		fontSize: "1rem", // Adjust the font size as needed
-		marginRight: "40px",
+		marginRight: "30px",
 		textDecoration: "none",
 		color: "white",
 	};
@@ -27,6 +27,9 @@ const Navbar = () => {
 				<div style={{ marginLeft: "auto" }}>
 					<Link href="/search" style={linkStyle}>
 						Search
+					</Link>
+					<Link href="/statistics" style={linkStyle}>
+						Statistics
 					</Link>
 					<Link href="/about" style={linkStyle}>
 						About
