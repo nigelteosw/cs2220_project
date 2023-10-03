@@ -36,7 +36,14 @@ export default function ResultsPage() {
 
 	const columns = [
 		{ field: "Entry", headerName: "Entry", flex: 1 },
-		{ field: "Authors", headerName: "Authors", flex: 1 },
+		{ field: "PDB", headerName: "PDB", flex: 1 },
+		{ field: "Mutations2", headerName: "Mutations2", flex: 1 },
+		{ field: "Protein_1", headerName: "Protein 1", flex: 1 },
+		{ field: "Protein_2", headerName: "Protein 2", flex: 1 },
+		{ field: "Experiment", headerName: "Experiment", flex: 1 },
+		{ field: "Temperature", headerName: "Temperature", flex: 1 },
+		{ field: "pH", headerName: "pH", flex: 1 },
+
 		{
 			field: "Binding_free_energy_G",
 			headerName: "Binding Free Energy G",
@@ -47,16 +54,10 @@ export default function ResultsPage() {
 			headerName: "Change in Binding Free Energy G",
 			flex: 1,
 		},
-
-		{ field: "Experiment", headerName: "Experiment", flex: 1 },
+		{ field: "Authors", headerName: "Authors", flex: 1 },
 		{ field: "Journal", headerName: "Journal", flex: 1 },
-		{ field: "Mutations2", headerName: "Mutations2", flex: 1 },
-		{ field: "PDB", headerName: "PDB", flex: 1 },
-		{ field: "Protein_1", headerName: "Protein 1", flex: 1 },
-		{ field: "Protein_2", headerName: "Protein 2", flex: 1 },
 		{ field: "PubMed_ID", headerName: "PubMed ID", flex: 1 },
-		{ field: "Temperature", headerName: "Temperature", flex: 1 },
-		{ field: "pH", headerName: "pH", flex: 1 },
+
 	];
 
 	const handleSearch = async () => {
